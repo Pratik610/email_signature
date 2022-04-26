@@ -7,7 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<style>
-		
+		input{
+			border-radius: 2px;
+
+		}
+		input::placeholder{
+			color: rgb(79, 65, 65) !important;
+			font-weight: 700 !important;
+			font-family: Arial, Helvetica, sans-serif;
+		}
 	</style>
 
 	
@@ -16,9 +24,17 @@
 
 	
 <div style="margin-bottom: 10px; width: 25%; margin: auto; padding:20px; background-color: rgb(248, 247, 247);" class=" mb-3 mt-4 w-25 mx-auto  p-5 bg-light">
-  <h3 for="" style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 2px;" class="mb-1">Enter Your Employee ID</h3>
-  <input type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="emp_id"  placeholder="">
-  <button onclick="getSignature()" style="margin: auto; background-color: #10b068; color: white; font-weight: 600; display: block; width: 75%; padding: 10px; border: none; border-radius: 5px;" class="btn text-bold mt-3 btn-success w-75 d-block mx-auto">Submit</button>
+ <form  onsubmit="event.preventDefault();  getSignature();">
+<h3 for="" style="font-family: Arial, Helvetica, sans-serif; margin-bottom: 10px;" class="mb-1">Enter Your Details</h3>
+  <input placeholder='Name' type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="inp_emp_name"  >
+  <input  placeholder="Email" type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="inp_emp_email"  >
+  <input  placeholder="Mobile Number" type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="inp_emp_number"  > 
+  <input placeholder="Designation" type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="inp_emp_designation"  >
+  <input  placeholder="Department" type="text" style="padding: 8px; border: 1px solid lightgrey; width: 90%; margin-bottom: 15px;" class="form-control" id="inp_emp_department"  > 
+ 
+ <button  type="submit" style="margin: auto; background-color: #10b068; color: white; font-weight: 600; display: block; width: 75%; padding: 10px; border: none; border-radius: 5px;" class="btn text-bold mt-3 btn-success w-75 d-block mx-auto">Submit</button>
+</form> 
+
 </div>
 
 
@@ -496,16 +512,19 @@
 
 		function getSignature () {
 			
-			const id = $('#emp_id').val()
 			
-			const emp = allEmp.find(ele => ele.id === id )
-			$('#emp_name').text(emp.name)
-			$('#emp_designation').text(emp.designation)
-			$('#emp_department').text(emp.department)
-			$('#emp_number_label').text(emp.mobile)
-			$('#emp_number_attr').attr('href',`tel:${emp.mobile}`)			
-			$('#emp_email_label').text(emp.emial)
-			$('#emp_email_attr').attr('href',`mailto:${emp.emial}`)
+		
+			
+		
+			$('#emp_name').text($('#inp_emp_name').val())
+			$('#emp_designation').text($('#inp_emp_designation').val())
+			$('#emp_department').text($('#inp_emp_department').val())
+			
+			$('#emp_number_label').text($('#inp_emp_number').val())
+			$('#emp_number_attr').attr('href',`tel:${$('#inp_emp_number').val()}`)		
+
+			$('#emp_email_label').text($('#inp_emp_email').val())
+			$('#emp_email_attr').attr('href',`mailto:${$('#inp_emp_mail').val()}`)
 
 		  }
 		
